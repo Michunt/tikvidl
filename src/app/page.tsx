@@ -223,7 +223,6 @@ export default function Home() {
                         className="px-4 py-2 bg-gradient-to-r from-pink-500 to-indigo-600 text-white rounded-lg shadow-md hover:from-pink-600 hover:to-indigo-700 transition-all duration-300 flex items-center space-x-2"
                         onClick={async () => {
                           // Use our proxy API to download the file
-                          const downloadUrl = format.urls[0];
                           const fileExt = format.format === 'mp3' ? 'mp3' : 'mp4';
                           const filename = `${videoData.metadata.id}_${format.quality}.${fileExt}`;
                           
@@ -295,6 +294,11 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+                <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                  <p>
+                    If the download doesn&apos;t start automatically, try using the &quot;Copy URL&quot; button and paste it in a new tab.
+                  </p>
+                </div>
               </div>
             </div>
           )}
@@ -337,6 +341,16 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+            </div>
+          )}
+          {error && (
+            <div className="mt-12">
+              <h3 className="text-xl font-semibold text-center text-gray-900 dark:text-white mb-6">
+                Error
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Couldn't find the video. Please check if the URL is correct.
+              </p>
             </div>
           )}
         </div>

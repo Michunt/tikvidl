@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { parse as urlParse } from 'url';
 import axios from 'axios';
 import crypto from 'crypto';
 
@@ -410,7 +409,7 @@ export async function POST(request: NextRequest) {
       
       const awemeDetail = apiResponse?.aweme_details?.[0];
       videoInfo = extractVideoInfo(awemeDetail);
-    } catch (apiError) {
+    } catch (error) {
       console.log('API extraction failed, falling back to web scraping');
       
       // Fallback to web scraping
